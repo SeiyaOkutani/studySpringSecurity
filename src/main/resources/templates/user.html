@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head><meta charset="UTF-8"></head>
+<body>
+	<h3>ログイン情報</h3>
+	<table border="1">
+    <tr><th>ログインユーザ名</th><th>ユーザ権限</th></tr>
+		<tr>
+			<td th:text="${username}"></td>
+			<td th:text="${authority}"></td>
+		</tr>
+	</table>
+
+	<br><div sec:authorize="hasAuthority('ADMIN')">
+		<a th:href="@{/admin/list}">ユーザ一覧</a>
+	</div><br>
+
+	<a th:href="@{/logout}">ログアウト</a>
+</body>
+</html>

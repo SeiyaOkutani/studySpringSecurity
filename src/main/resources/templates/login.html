@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head><meta charset="UTF-8"></head>
+<body>
+	<h3>ユーザ管理システム</h3>
+	<form th:action="@{/login}" method="post">
+		<input type="text" name="username" placeholder="ユーザ名"><br>
+
+		<input type="password" name="password" placeholder="パスワード"><br><br>
+
+		<button type="submit">ログイン</button>
+	</form>
+
+	<br><a th:href="@{/register}">新規登録はこちら</a>
+</body>
+</html>

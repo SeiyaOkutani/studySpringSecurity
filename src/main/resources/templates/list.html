@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head><meta charset="UTF-8"></head>
+<body>
+	<h3>ユーザ一覧</h3>
+	<table border="1">
+    <tr><th>#</th><th>ユーザ名</th><th>Email</th><th>性別</th><th>部署</th><th>権限</th></tr>
+		<tr th:each="user : ${users}" th:object="${user}">
+			<td th:text="*{id}"></td>
+			<td th:text="*{username}"></td>
+			<td th:text="*{email}"></td>
+			<td th:text="${T(com.study.Type).GENDERS.get(user.gender)}"></td>
+			<td th:text="${T(com.study.Type).DEPARTMENTS.get(user.department)}"></td>
+			<td th:text="*{authority}"></td>
+			<td><a th:href="@{/admin/list/edit(id=*{id})}">編集</a>
+				<a th:href="@{/admin/list/delete(id=*{id})}">削除</a>
+			</td>
+		</tr>
+	</table>
+
+	<br><div sec:authorize="hasAuthority('ADMIN')">
+		<a th:href="@{/OK}">ログイン情報</a>
+	</div><br>
+
+	<a th:href="@{/logout}">ログアウト</a>
+</body>
+</html>
